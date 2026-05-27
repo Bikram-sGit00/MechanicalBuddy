@@ -1,0 +1,148 @@
+.hero-left {
+  padding: 20px 5px;
+}
+
+.live-tag {
+  width: fit-content;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 14px;
+  background: white;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  margin-bottom: 28px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.live-tag span {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.hero-left h1 {
+  font-size: 66px;
+  line-height: 1.02;
+  font-weight: 800;
+  margin-bottom: 22px;
+  letter-spacing: -2.5px;
+}
+
+.hero-left h1 span {
+  color: #3b82f6;
+}
+
+.hero-left p {
+  font-size: 19px;
+  color: #64748b;
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 18px;
+  margin-top: 38px;
+}
+
+.primary-btn {
+  height: 62px;
+  padding: 0 34px;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.18);
+}
+
+.secondary-btn {
+  height: 62px;
+  padding: 0 32px;
+  background: white;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 17px;
+  font-weight: 500;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.secondary-btn svg {
+  color: #2563eb;
+}
+
+.stats-row {
+  display: flex;
+  gap: 18px;
+  margin-top: 45px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background: white;
+  padding: 18px;
+  border-radius: 22px;
+  width: 210px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.stat-box svg {
+  font-size: 28px;
+}
+
+.stat-box:nth-child(1) svg {
+  color: #fbbf24;
+}
+
+.stat-box:nth-child(2) svg {
+  color: #3b82f6;
+}
+
+.stat-box:nth-child(3) svg {
+  color: #f59e0b;
+}
+
+.stat-box h4 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.stat-box p {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .hero-left h1 {
+    font-size: 48px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,213 @@
+.mechanic-wrapper {
+  position: relative;
+
+  height: 300px;
+
+  overflow: hidden;
+
+  margin-top: 18px;
+  border-radius: 16px;
+}
+
+.mechanic-card {
+  position: absolute;
+
+  width: 100%;
+
+  background: rgba(255,255,255,0.82);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.5);
+
+  border-radius: 32px;
+
+  padding: 22px;
+
+  display: flex;
+  gap: 22px;
+
+  align-items: center;
+
+  box-shadow:
+    0 10px 40px rgba(15,23,42,0.06);
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s ease,
+    filter 0.45s ease;
+
+  top: 0;
+  left: 0;
+}
+
+.mechanic-img {
+  width: 125px;
+  height: 125px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  flex-shrink: 0;
+
+  border: 4px solid rgba(255,255,255,0.9);
+}
+
+.mechanic-content {
+  flex: 1;
+}
+
+.mechanic-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mechanic-top h2 {
+  font-size: 30px;
+
+  margin-bottom: 5px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #0f172a;
+}
+
+.verified-icon {
+  color: #3b82f6;
+  font-size: 22px;
+}
+
+.mechanic-top p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.available-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: #ecfdf5;
+
+  color: #16a34a;
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.available-badge span {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+}
+
+.mechanic-info {
+  margin-top: 18px;
+
+  display: flex;
+  gap: 25px;
+
+  color: #475569;
+
+  font-size: 14px;
+}
+
+.mechanic-info svg {
+  color: #fbbf24;
+  margin-right: 8px;
+}
+
+.skill-tags {
+  display: flex;
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin-top: 18px;
+}
+
+.skill-tags span {
+  background: #f1f5f9;
+
+  padding: 9px 16px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+
+  color: #334155;
+}
+
+.mechanic-actions {
+  display: flex;
+  gap: 14px;
+
+  margin-top: 22px;
+}
+
+.request-btn {
+  flex: 1;
+
+  height: 58px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #3b82f6
+    );
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+.icon-btn {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 18px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  font-size: 20px;
+
+  color: #0f172a;
+
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+
+  .mechanic-wrapper {
+    height: 320px;
+  }
+
+  .mechanic-card {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+}
