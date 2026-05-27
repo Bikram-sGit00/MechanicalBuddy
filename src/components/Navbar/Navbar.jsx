@@ -10,6 +10,7 @@ import {
 
 import {
   useState,
+  useEffect,
 } from 'react';
 
 import ProfileModal from '../ProfileModal/ProfileModal';
@@ -19,10 +20,39 @@ const Navbar = () => {
   const [showProfileModal, setShowProfileModal] =
     useState(false);
 
+  const [userData, setUserData] =
+    useState(null);
+
+  useEffect(() => {
+
+    const customer =
+      localStorage.getItem('customer');
+
+    const mechanic =
+      localStorage.getItem('mechanic');
+
+    if (customer) {
+
+      setUserData(
+        JSON.parse(customer)
+      );
+
+    }
+
+    else if (mechanic) {
+
+      setUserData(
+        JSON.parse(mechanic)
+      );
+
+    }
+
+  }, []);
+
   return (
 
     <>
-    
+
       <nav className="navbar container">
 
         <div className="logo-area">
@@ -63,17 +93,27 @@ const Navbar = () => {
         <div className="nav-right">
 
           <div className="location-box">
+
             <HiOutlineLocationMarker />
+
             Rajpur Sonarpur, West Bengal
+
           </div>
 
           <div className="notification">
+
             <IoNotificationsOutline />
+
             <span></span>
+
           </div>
 
           <img
-            src="https://i.pravatar.cc/100"
+            src={
+              userData
+                ? 'https://i.pravatar.cc/100'
+                : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+            }
             alt="profile"
             className="profile"
             onClick={() =>
@@ -86,20 +126,29 @@ const Navbar = () => {
       </nav>
 
       {
+
         showProfileModal && (
 
           <ProfileModal
+
             closeModal={() =>
               setShowProfileModal(false)
             }
+
+            userData={userData}
+
+            setUserData={setUserData}
+
           />
 
         )
+
       }
 
     </>
 
   );
+
 };
 
 export default Navbar;

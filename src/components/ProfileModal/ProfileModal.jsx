@@ -1,21 +1,49 @@
 import './ProfileModal.css';
 
 import {
+
   FiUser,
   FiClock,
   FiGlobe,
   FiHelpCircle,
   FiUsers,
   FiLogOut,
+
 } from 'react-icons/fi';
 
 import {
+
   useNavigate,
+
 } from 'react-router-dom';
 
-const ProfileModal = ({ closeModal }) => {
+const ProfileModal = ({
+
+  closeModal,
+  userData,
+  setUserData
+
+}) => {
 
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+
+    localStorage.removeItem('token');
+
+    localStorage.removeItem('customer');
+
+    localStorage.removeItem('mechanicToken');
+
+    localStorage.removeItem('mechanic');
+
+    setUserData(null);
+
+    closeModal();
+
+    navigate('/');
+
+  };
 
   return (
 
@@ -34,7 +62,11 @@ const ProfileModal = ({ closeModal }) => {
           <div className="profile-avatar-wrapper">
 
             <img
-              src="https://i.pravatar.cc/100"
+              src={
+                userData
+                  ? 'https://i.pravatar.cc/100'
+                  : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+              }
               alt="profile"
               className="profile-avatar"
             />
@@ -45,10 +77,24 @@ const ProfileModal = ({ closeModal }) => {
 
           <div>
 
-            <h3>Mechanical Buddy</h3>
+            <h3>
+
+              {
+                userData
+                  ? userData.name
+                  : 'Mechanical Buddy'
+              }
+
+            </h3>
 
             <p>
-              mechanicalbuddy@example.com
+
+              {
+                userData
+                  ? userData.email
+                  : 'mechanicalbuddy@example.com'
+              }
+
             </p>
 
           </div>
@@ -57,22 +103,49 @@ const ProfileModal = ({ closeModal }) => {
 
         <div className="profile-menu">
 
-          <button
-            className="menu-item"
-            onClick={() => {
-              closeModal();
-              navigate('/division');
-            }}
-          >
-            <FiUser />
-            Sign In / Sign Up
-          </button>
+          {
+
+            !userData ? (
+
+              <button
+                className="menu-item"
+                onClick={() => {
+
+                  closeModal();
+
+                  navigate('/division');
+
+                }}
+              >
+
+                <FiUser />
+
+                Sign In / Sign Up
+
+              </button>
+
+            ) : (
+
+              <button className="menu-item">
+
+                <FiUser />
+
+                View Profile
+
+              </button>
+
+            )
+
+          }
 
           <button className="menu-item language-btn">
 
             <div className="language-left">
+
               <FiGlobe />
+
               Language
+
             </div>
 
             <span>▼</span>
@@ -80,24 +153,47 @@ const ProfileModal = ({ closeModal }) => {
           </button>
 
           <button className="menu-item">
+
             <FiClock />
+
             Booking History
+
           </button>
 
           <button className="menu-item">
+
             <FiHelpCircle />
+
             Support
+
           </button>
 
           <button className="menu-item">
+
             <FiUsers />
+
             Community
+
           </button>
 
-          <button className="menu-item logout-btn">
-            <FiLogOut />
-            Sign Out
-          </button>
+          {
+
+            userData && (
+
+              <button
+                className="menu-item logout-btn"
+                onClick={handleLogout}
+              >
+
+                <FiLogOut />
+
+                Sign Out
+
+              </button>
+
+            )
+
+          }
 
         </div>
 
@@ -106,6 +202,7 @@ const ProfileModal = ({ closeModal }) => {
     </div>
 
   );
+
 };
 
 export default ProfileModal;

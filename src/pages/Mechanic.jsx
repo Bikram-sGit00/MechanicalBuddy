@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { motion } from 'framer-motion'
+import axios from 'axios'
 
 import './Mechanic.css'
 
@@ -83,25 +84,59 @@ const MechanicLoginPage = ({ onLogin, onBackToHome }) => {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleLoginSubmit = async (e) => {
+const handleLoginSubmit = async (e) => {
 
-    e.preventDefault()
+  e.preventDefault()
 
-    if (!validateLogin()) return
+  if (!validateLogin()) return
+
+  try {
 
     setLoading(true)
 
-    setTimeout(() => {
+    const response = await axios.post(
 
-      setLoading(false)
+      'http://localhost:5000/api/auth/mechanic/login',
 
-      if (onLogin) {
-        onLogin(loginData)
+      {
+        email: loginData.email,
+        password: loginData.password
       }
 
-    }, 1500)
+    )
+
+    localStorage.setItem(
+      'mechanicToken',
+      response.data.token
+    )
+
+    localStorage.setItem(
+      'mechanic',
+      JSON.stringify(response.data.mechanic)
+    )
+
+    alert('Mechanic Login Successful')
+
+    navigate('/')
 
   }
+
+  catch (error) {
+
+    alert(
+      error.response?.data?.message ||
+      'Login failed'
+    )
+
+  }
+
+  finally {
+
+    setLoading(false)
+
+  }
+
+}
 
   return (
 

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import axios from 'axios'
 import './Customer.css'
 
 import {
@@ -80,24 +81,59 @@ const CustomerLogin = ({ onLogin }) => {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
 
-    e.preventDefault()
+  e.preventDefault()
 
-    if (!validate()) return
+  if (!validate()) return
+
+  try {
 
     setLoading(true)
 
-    setTimeout(() => {
+    const response = await axios.post(
 
-      setLoading(false)
+      'http://localhost:5000/api/auth/customer/login',
 
-      if (onLogin) {
-        onLogin(formData)
+      {
+        email: formData.email,
+        password: formData.password
       }
 
-    }, 1500)
+    )
+
+    localStorage.setItem(
+      'token',
+      response.data.token
+    )
+
+    localStorage.setItem(
+      'customer',
+      JSON.stringify(response.data.user)
+    )
+
+    alert('Login Successful')
+
+    navigate('/')
+
   }
+
+  catch (error) {
+
+    alert(
+      error.response?.data?.message ||
+      'Login failed'
+    )
+
+  }
+
+  finally {
+
+    setLoading(false)
+
+  }
+
+}
 
   const features = [
     {

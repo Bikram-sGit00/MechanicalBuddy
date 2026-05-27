@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import './CustomerReg.css'
 import { 
   FaUser, 
@@ -17,6 +19,7 @@ import {
 } from 'react-icons/fa'
 
 const CustomerRegisterPage = ({ onBackToLogin, onRegister }) => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     fullName: '',
     mobileNumber: '',
@@ -73,18 +76,50 @@ const CustomerRegisterPage = ({ onBackToLogin, onRegister }) => {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!validate()) return
-    
+const handleSubmit = async (e) => {
+
+  e.preventDefault()
+
+  if (!validate()) return
+
+  try {
+
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      if (onRegister) {
-        onRegister(formData)
+
+    const response = await axios.post(
+
+      'http://localhost:5000/api/auth/customer/register',
+
+      {
+        name: formData.fullName,
+        email: formData.email,
+        password: formData.password
       }
-    }, 2000)
+
+    )
+
+    alert(response.data.message)
+
+    navigate('/customer-auth')
+
   }
+
+  catch (error) {
+
+    alert(
+      error.response?.data?.message ||
+      'Registration failed'
+    )
+
+  }
+
+  finally {
+
+    setLoading(false)
+
+  }
+
+}
 
   const features = [
     { icon: <FaShieldAlt />, text: '24/7 Roadside Assistance' },

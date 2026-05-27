@@ -1,4 +1,5 @@
 import './MechanicCard.css';
+import axios from 'axios';
 
 import {
   BsChatDots,
@@ -13,43 +14,80 @@ import {
   useState,
 } from 'react';
 
-const mechanics = [
-  {
-    id: 1,
-    name: 'Rahul Mechanic',
-    image: 'https://i.pravatar.cc/300?img=12',
-    distance: '1.2 km away',
-    rating: '4.9 (128 reviews)',
-    experience: '5+ Years Experience',
-    skills: ['Engine Repair', 'Battery', 'Brakes'],
-  },
 
-  {
-    id: 2,
-    name: 'Amit Garage',
-    image: 'https://i.pravatar.cc/300?img=15',
-    distance: '1.8 km away',
-    rating: '4.7 (94 reviews)',
-    experience: '4+ Years Experience',
-    skills: ['Tyre', 'Oil Change', 'General Service'],
-  },
-
-  {
-    id: 3,
-    name: 'Suman Auto',
-    image: 'https://i.pravatar.cc/300?img=18',
-    distance: '2.4 km away',
-    rating: '4.8 (176 reviews)',
-    experience: '7+ Years Experience',
-    skills: ['Battery', 'Engine', 'Emergency'],
-  },
-];
 
 const MechanicCard = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const [mechanics, setMechanics] = useState([]);
+  
+
   const wrapperRef = useRef(null);
+
+  useEffect(() => {
+
+  const fetchMechanics = async () => {
+
+    try {
+
+      const response = await axios.get(
+        'http://localhost:5000/api/mechanics'
+      );
+
+      const formattedMechanics =
+        response.data.map(
+          (mechanic, index) => ({
+
+            id: mechanic._id,
+
+            name: mechanic.name,
+
+            image:
+              `https://i.pravatar.cc/300?img=${index + 10}`,
+
+            distance:
+              `${(
+                Math.random() * 3
+              ).toFixed(1)} km away`,
+
+            rating:
+              `4.${Math.floor(
+                Math.random() * 9
+              )} (${Math.floor(
+                Math.random() * 200
+              )} reviews)`,
+
+            experience:
+              `${Math.floor(
+                Math.random() * 8
+              ) + 1}+ Years Experience`,
+
+            skills: [
+              'Engine Repair',
+              'Battery',
+              'Emergency'
+            ]
+
+          }))
+
+      setMechanics(
+        formattedMechanics
+      )
+
+    }
+
+    catch (error) {
+
+      console.log(error)
+
+    }
+
+  }
+
+  fetchMechanics()
+
+}, []);
 
   useEffect(() => {
 
