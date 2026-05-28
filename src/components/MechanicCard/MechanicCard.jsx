@@ -9,6 +9,24 @@ import {
 } from "react-icons/bs";
 
 import { useEffect, useRef, useState } from "react";
+const calculateDistance = (lat1, lon1, lat2, lon2) => {
+  const R = 6371;
+
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  return R * c;
+};
 
 const MechanicCard = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -21,24 +39,50 @@ const MechanicCard = () => {
     const fetchMechanics = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/mechanics");
+        const manualLocation = JSON.parse(
+          localStorage.getItem("manualLocation"),
+        );
 
-        const formattedMechanics = response.data.map((mechanic, index) => ({
-          id: mechanic._id,
+        const userLat = manualLocation ? manualLocation.lat : 22.5726;
 
-          name: mechanic.name,
+        const userLng = manualLocation ? manualLocation.lng : 88.3639;
 
-          image: `https://i.pravatar.cc/300?img=${index + 10}`,
+        const formattedMechanics = response.data
 
-          distance: `${(Math.random() * 3).toFixed(1)} km away`,
+          .filter(
+            (mechanic) =>
+              mechanic.currentLocation &&
+              mechanic.currentLocation.lat &&
+              mechanic.currentLocation.lng,
+          )
 
-          rating: `4.${Math.floor(Math.random() * 9)} (${Math.floor(
-            Math.random() * 200,
-          )} reviews)`,
+          .map((mechanic, index) => ({
+            id: mechanic._id,
 
-          experience: `${Math.floor(Math.random() * 8) + 1}+ Years Experience`,
+            name: mechanic.name,
 
-          skills: ["Engine Repair", "Battery", "Emergency"],
-        }));
+            image: `https://i.pravatar.cc/300?img=${index + 10}`,
+
+            distance: `${calculateDistance(
+              userLat,
+              userLng,
+
+              mechanic.currentLocation.lat,
+
+              mechanic.currentLocation.lng,
+            ).toFixed(1)} km away`,
+
+            rating: `4.${Math.floor(Math.random() * 9)} (${Math.floor(
+              Math.random() * 200,
+            )} reviews)`,
+
+            experience: `${Math.floor(Math.random() * 8) + 1}+ Years Experience`,
+
+            skills: ["Engine Repair", "Battery", "Emergency"],
+          }));
+        formattedMechanics.sort((a, b) => {
+          return parseFloat(a.distance) - parseFloat(b.distance);
+        });
 
         setMechanics(formattedMechanics);
       } catch (error) {
@@ -145,19 +189,46 @@ const MechanicCard = () => {
               <div className="mechanic-actions">
                 <button
                   className="request-btn"
-                  onClick={() => {
-                    localStorage.setItem(
-                      "selectedMechanic",
+                  onClick={async () => {
+                    try {
+                      const customer = JSON.parse(
+                        localStorage.getItem("customer"),
+                      );
 
-                      JSON.stringify(mechanic),
-                    );
+                      const manualLocation = JSON.parse(
+                        localStorage.getItem("manualLocation"),
+                      );
 
-                    alert("Mechanic selected successfully");
+                      await axios.post(
+                        "http://localhost:5000/api/requests/create",
+
+                        {
+                          customerId: customer?._id,
+
+                          mechanicId: mechanic.id,
+
+                          customerName: customer?.name,
+
+                          vehicleNumber: "WB 12 AB 1234",
+
+                          issue: "Emergency Breakdown",
+
+                          customerLocation: {
+                            lat: manualLocation?.lat,
+
+                            lng: manualLocation?.lng,
+                          },
+                        },
+                      );
+
+                      alert("Request sent to mechanic");
+                    } catch (error) {
+                      console.log(error);
+                    }
                   }}
                 >
                   Request Assistance
                 </button>
-
                 <button className="icon-btn">
                   <BsChatDots />
                 </button>

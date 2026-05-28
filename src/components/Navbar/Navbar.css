@@ -222,3 +222,19 @@ img {
   }
 
 }
+
+.location-input {
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  width: 180px;
+
+  font-size: 14px;
+
+  color: #0f172a;
+
+}

@@ -1,15 +1,15 @@
-import './Hero.css';
+import "./Hero.css";
 
-import { FiArrowRight } from 'react-icons/fi';
-import { BsTelephone } from 'react-icons/bs';
+import { FiArrowRight } from "react-icons/fi";
+import { BsTelephone } from "react-icons/bs";
 
 import {
   HiOutlineShieldCheck,
   HiOutlineLightningBolt,
   HiOutlineStar,
-} from 'react-icons/hi';
+} from "react-icons/hi";
 
-const Hero = () => {
+const Hero = ({ mechanicMode }) => {
   return (
     <section className="hero-left">
       <div className="live-tag">
@@ -24,46 +24,61 @@ const Hero = () => {
       </h1>
 
       <p>
-        Connect with nearby mechanics instantly, track live assistance,
-        and get back on the road with confidence.
+        Connect with nearby mechanics instantly, track live assistance, and get
+        back on the road with confidence.
       </p>
 
-      <div className="hero-buttons">
-<button
-  className="primary-btn"
-  onClick={() => {
+<div className="hero-buttons">
 
-    const mechanicSection =
-      document.querySelector(
-        '.mechanic-wrapper'
-      )
+  {
 
-    if (mechanicSection) {
+    mechanicMode ? (
 
-      mechanicSection.scrollIntoView({
+      <>
 
-        behavior: 'smooth',
+        <button className="primary-btn">
 
-        block: 'center'
+          Find Customers
 
-      })
+          <FiArrowRight />
 
-    }
-
-  }}
->
-
-  Find Mechanic
-
-  <FiArrowRight />
-
-</button>
+        </button>
 
         <button className="secondary-btn">
-          <BsTelephone />
-          Emergency SOS
+
+          Go Offline
+
         </button>
-      </div>
+
+      </>
+
+    ) : (
+
+      <>
+
+        <button className="primary-btn">
+
+          Find Mechanic
+
+          <FiArrowRight />
+
+        </button>
+
+        <button className="secondary-btn">
+
+          <BsTelephone />
+
+          Emergency SOS
+
+        </button>
+
+      </>
+
+    )
+
+  }
+
+</div>
 
       <div className="stats-row">
         <div className="stat-box">

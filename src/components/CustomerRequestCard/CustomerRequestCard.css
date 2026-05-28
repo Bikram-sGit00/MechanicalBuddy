@@ -1,0 +1,223 @@
+.customer-wrapper {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+
+}
+
+.customer-card {
+
+  background:
+    rgba(255,255,255,0.62);
+
+  backdrop-filter: blur(20px);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 8px 32px
+    rgba(31,38,135,0.08);
+
+  border-radius: 34px;
+
+  padding: 22px;
+
+  display: flex;
+
+  gap: 22px;
+
+}
+
+.customer-img {
+
+  width: 120px;
+
+  height: 120px;
+
+  border-radius: 28px;
+
+  object-fit: cover;
+
+}
+
+.customer-content {
+
+  flex: 1;
+
+}
+
+.customer-top {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  margin-bottom: 18px;
+
+}
+
+.customer-top h2 {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 24px;
+
+  color: #0f172a;
+
+  margin-bottom: 6px;
+
+}
+
+.customer-top p {
+
+  color: #64748b;
+
+}
+
+.verified-icon {
+
+  color: #2563eb;
+
+}
+
+.urgency-badge {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  background:
+    rgba(239,68,68,0.12);
+
+  color: #dc2626;
+
+  padding: 10px 16px;
+
+  border-radius: 16px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+.customer-info {
+
+  display: flex;
+
+  gap: 22px;
+
+  margin-bottom: 18px;
+
+}
+
+.customer-info div {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #0f172a;
+
+  font-weight: 600;
+
+}
+
+.issue-box {
+
+  display: inline-block;
+
+  background:
+    rgba(37,99,235,0.08);
+
+  color: #2563eb;
+
+  padding: 12px 18px;
+
+  border-radius: 16px;
+
+  font-weight: 700;
+
+  margin-bottom: 22px;
+
+}
+
+.customer-actions {
+
+  display: flex;
+
+  gap: 14px;
+
+}
+
+.accept-btn,
+.reject-btn,
+.call-btn {
+
+  border: none;
+
+  cursor: pointer;
+
+  border-radius: 18px;
+
+  padding: 14px 20px;
+
+  font-weight: 700;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+}
+
+.accept-btn {
+
+  background:
+    linear-gradient(
+      135deg,
+      #22c55e,
+      #16a34a
+    );
+
+  color: white;
+
+}
+
+.reject-btn {
+
+  background:
+    rgba(239,68,68,0.1);
+
+  color: #dc2626;
+
+}
+
+.call-btn {
+
+  background:
+    rgba(37,99,235,0.1);
+
+  color: #2563eb;
+
+  width: 56px;
+
+}

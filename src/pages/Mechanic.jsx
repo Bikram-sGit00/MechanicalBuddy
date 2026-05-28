@@ -125,7 +125,7 @@ const MechanicLoginPage = ({ onLogin, onBackToHome }) => {
 
       alert("Mechanic Login Successful");
 
-      navigate('/mechanic-dashboard')
+      navigate('/mechanic-home')
     } catch (error) {
       console.log(error);
 

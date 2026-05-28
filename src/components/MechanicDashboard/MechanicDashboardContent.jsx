@@ -1,5 +1,7 @@
 import './MechanicDashboardContent.css';
 
+import CustomerRequestCard from '../CustomerRequestCard/CustomerRequestCard';
+
 import {
   MapContainer,
   TileLayer,
@@ -157,6 +159,8 @@ const MechanicDashboardContent = () => {
         </div>
 
       </div>
+
+      <CustomerRequestCard />
 
     </div>
 

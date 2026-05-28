@@ -108,17 +108,54 @@ const LiveTracking = () => {
 
   const [eta, setEta] = useState("0");
 
-  useEffect(() => {
+useEffect(() => {
+
+  const manualLocation =
+    JSON.parse(
+      localStorage.getItem(
+        'manualLocation'
+      )
+    );
+
+  if (manualLocation) {
+
+    setUserPosition([
+
+      manualLocation.lat,
+
+      manualLocation.lng
+
+    ]);
+
+  }
+
+  else {
+
     navigator.geolocation.getCurrentPosition(
+
       (position) => {
-        setUserPosition([position.coords.latitude, position.coords.longitude]);
+
+        setUserPosition([
+
+          position.coords.latitude,
+
+          position.coords.longitude
+
+        ]);
+
       },
 
       (error) => {
+
         console.log(error);
-      },
+
+      }
+
     );
-  }, []);
+
+  }
+
+}, []);
 
   useEffect(() => {
     const fetchNearestMechanic = async () => {

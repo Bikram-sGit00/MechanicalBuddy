@@ -1,56 +1,48 @@
-const express = require('express')
+const express = require("express");
 
-const cors = require('cors')
+const cors = require("cors");
 
-const dotenv = require('dotenv')
+const dotenv = require("dotenv");
 
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const authRoutes =
-  require('./routes/authRoutes')
+const authRoutes = require("./routes/authRoutes");
 
-const mechanicRoutes =
-  require('./routes/mechanicRoutes')
+const mechanicRoutes = require("./routes/mechanicRoutes");
 
-dotenv.config()
+const requestRoutes = require("./routes/requestRoutes");
 
-const app = express()
+dotenv.config();
 
-app.use(cors())
+const app = express();
 
-app.use(express.json())
+app.use(cors());
 
-mongoose.connect(process.env.MONGO_URI)
+app.use(express.json());
 
-.then(() => {
-  console.log('MongoDB Connected')
-})
+app.use("/api/requests", requestRoutes);
 
-.catch((err) => {
-  console.log(err)
-})
+mongoose
+  .connect(process.env.MONGO_URI)
 
-app.get('/', (req, res) => {
+  .then(() => {
+    console.log("MongoDB Connected");
+  })
 
-  res.send(
-    'Mechanical Buddy Backend Running'
-  )
+  .catch((err) => {
+    console.log(err);
+  });
 
-})
+app.get("/", (req, res) => {
+  res.send("Mechanical Buddy Backend Running");
+});
 
-app.use('/api/auth', authRoutes)
+app.use("/api/auth", authRoutes);
 
-app.use(
-  '/api/mechanics',
-  mechanicRoutes
-)
+app.use("/api/mechanics", mechanicRoutes);
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-
-  console.log(
-    `Server running on port ${PORT}`
-  )
-
-})
+  console.log(`Server running on port ${PORT}`);
+});

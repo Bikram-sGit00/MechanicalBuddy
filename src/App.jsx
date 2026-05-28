@@ -12,6 +12,7 @@ import Mechanic from "./pages/Mechanic";
 
 import MechanicReg from "./pages/MechanicReg";
 import MechanicDashboard from "./pages/MechanicDashboard";
+import MechanicHome from "./pages/MechanicHome";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
 
         <Route path="/mechanic-register" element={<MechanicReg />} />
         <Route path="/mechanic-dashboard" element={<MechanicDashboard />} />
+        <Route path="/mechanic-home" element={<MechanicHome />} />
       </Routes>
     </BrowserRouter>
   );
