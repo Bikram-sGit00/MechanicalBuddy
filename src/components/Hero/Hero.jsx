@@ -29,10 +29,35 @@ const Hero = () => {
       </p>
 
       <div className="hero-buttons">
-        <button className="primary-btn">
-          Find Mechanic
-          <FiArrowRight />
-        </button>
+<button
+  className="primary-btn"
+  onClick={() => {
+
+    const mechanicSection =
+      document.querySelector(
+        '.mechanic-wrapper'
+      )
+
+    if (mechanicSection) {
+
+      mechanicSection.scrollIntoView({
+
+        behavior: 'smooth',
+
+        block: 'center'
+
+      })
+
+    }
+
+  }}
+>
+
+  Find Mechanic
+
+  <FiArrowRight />
+
+</button>
 
         <button className="secondary-btn">
           <BsTelephone />

@@ -4,7 +4,9 @@ const router = express.Router()
 
 const {
 
-  getAllMechanics
+  getAllMechanics,
+
+  updateMechanicLocation
 
 } = require(
   '../controllers/mechanicController'
@@ -13,6 +15,11 @@ const {
 router.get(
   '/',
   getAllMechanics
+)
+
+router.post(
+  '/update-location',
+  updateMechanicLocation
 )
 
 module.exports = router
