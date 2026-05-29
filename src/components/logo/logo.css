@@ -1,0 +1,132 @@
+/* Logo.css - Animated Logo Small Size */
+
+.logo-container {
+  text-align: center;
+  cursor: pointer;
+}
+
+.logo-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.mechanical {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #8d8d98;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.buddy {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d7dff;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(45, 125, 255, 0.5);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.bottom-design {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.line-left,
+.line-right {
+  width: 50px;
+  height: 2px;
+  border-radius: 20px;
+}
+
+.line-left {
+  background: linear-gradient(to right, transparent, #ffb100);
+  box-shadow: 0 0 6px rgba(255, 177, 0, 0.8);
+}
+
+.line-right {
+  background: linear-gradient(to left, transparent, #2d7dff);
+  box-shadow: 0 0 6px rgba(45, 125, 255, 0.8);
+}
+
+.gear {
+  font-size: 14px;
+  color: #7d7d7d;
+  animation: spin 4s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hover effect */
+.logo-container:hover .gear {
+  animation: spin 1.5s linear infinite;
+  color: #ffb100;
+}
+/* 
+.logo-container:hover .mechanical {
+  color: #ffffff;
+} */
+
+.logo-container:hover .buddy {
+  color: #3b82f6;
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mechanical,
+  .buddy {
+    font-size: 14px;
+  }
+  
+  .line-left,
+  .line-right {
+    width: 35px;
+  }
+  
+  .gear {
+    font-size: 11px;
+  }
+  
+  .logo-text {
+    gap: 5px;
+  }
+  
+  .bottom-design {
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mechanical,
+  .buddy {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  
+  .line-left,
+  .line-right {
+    width: 25px;
+    height: 1.5px;
+  }
+  
+  .gear {
+    font-size: 10px;
+  }
+}
