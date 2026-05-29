@@ -174,3 +174,23 @@
 
   color: #ef4444;
 }
+
+
+
+.language-select {
+
+  border: none;
+
+  background: transparent;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: #0f172a;
+
+  outline: none;
+
+  cursor: pointer;
+
+}

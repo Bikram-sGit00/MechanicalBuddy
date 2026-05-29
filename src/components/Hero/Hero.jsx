@@ -9,7 +9,13 @@ import {
   HiOutlineStar,
 } from "react-icons/hi";
 
+import {
+  useTranslation,
+} from 'react-i18next';
+
 const Hero = ({ mechanicMode }) => {
+  const { t } =
+  useTranslation();
   return (
     <section className="hero-left">
       <div className="live-tag">
@@ -18,14 +24,13 @@ const Hero = ({ mechanicMode }) => {
       </div>
 
       <h1>
-        Modern Roadside
+        {t('heroTitle1')}
         <br />
-        <span>Assistance Platform</span>
+        <span>{t('heroTitle2')}</span>
       </h1>
 
       <p>
-        Connect with nearby mechanics instantly, track live assistance, and get
-        back on the road with confidence.
+        {t('heroDescription')}
       </p>
 
 <div className="hero-buttons">
@@ -38,7 +43,7 @@ const Hero = ({ mechanicMode }) => {
 
         <button className="primary-btn">
 
-          Find Customers
+          {t('findCustomers')}
 
           <FiArrowRight />
 
@@ -46,7 +51,7 @@ const Hero = ({ mechanicMode }) => {
 
         <button className="secondary-btn">
 
-          Go Offline
+          {t('goOffline')}
 
         </button>
 
@@ -58,7 +63,7 @@ const Hero = ({ mechanicMode }) => {
 
         <button className="primary-btn">
 
-          Find Mechanic
+          {t('findMechanic')}
 
           <FiArrowRight />
 
@@ -68,7 +73,7 @@ const Hero = ({ mechanicMode }) => {
 
           <BsTelephone />
 
-          Emergency SOS
+          {t('emergencySOS')}
 
         </button>
 
