@@ -1,10 +1,7 @@
-
-
-
 <p align="center">
-
-  <img src="https://github.com/user-attachments/assets/2764dd36-8b61-459a-8afa-6e7ba7103e60" alt="Mechanical Buddy, roadside help tracked live" width="50%" />
+  <img src="assets/banner.svg" alt="Mechanical Buddy, roadside help tracked live" width="100%" />
 </p>
+
 
 <p align="center">
   <h2>A roadside assistance platform for the moment the car stops and the phone is all you have</h2>
@@ -65,33 +62,8 @@ The customer side is built around getting help quickly: nearby mechanic support,
 | 🌐 **Language support** | Built on i18next so the interface can switch languages |
 | 🎞️ **Smooth motion** | Page and card transitions with Framer Motion |
 
-## 🧰 Used technologies
-
-<p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="52" height="52" alt="HTML5" title="HTML5" />
-  &nbsp;&nbsp;
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="52" height="52" alt="CSS3" title="CSS3" />
-  &nbsp;&nbsp;
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="52" height="52" alt="JavaScript" title="JavaScript" />
-  &nbsp;&nbsp;
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="52" height="52" alt="React" title="React" />
-  &nbsp;&nbsp;
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" width="52" height="52" alt="Vite" title="Vite" />
-  &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/reactrouter/CA4245" width="52" height="52" alt="React Router" title="React Router" />
-  &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/leaflet/199900" width="52" height="52" alt="Leaflet" title="Leaflet" />
-  &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/framer/0055FF" width="52" height="52" alt="Framer Motion" title="Framer Motion" />
-  &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/i18next/26A69A" width="52" height="52" alt="i18next" title="i18next" />
-  &nbsp;&nbsp;
-  <img src="https://cdn.simpleicons.org/axios/5A29E4" width="52" height="52" alt="Axios" title="Axios" />
-</p>
-
-<p align="center">
-  HTML, CSS, JavaScript, React, Vite, React Router, Leaflet, Framer Motion, i18next, Axios
-</p>
+🧰 Used technologies
+<p align="center"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="52" height="52" alt="HTML5" title="HTML5" /> &nbsp;&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="52" height="52" alt="CSS3" title="CSS3" /> &nbsp;&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="52" height="52" alt="JavaScript" title="JavaScript" /> &nbsp;&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="52" height="52" alt="React" title="React" /> &nbsp;&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" width="52" height="52" alt="Vite" title="Vite" /> &nbsp;&nbsp; <img src="https://cdn.simpleicons.org/reactrouter/CA4245" width="52" height="52" alt="React Router" title="React Router" /> &nbsp;&nbsp; <img src="https://cdn.simpleicons.org/leaflet/199900" width="52" height="52" alt="Leaflet" title="Leaflet" /> &nbsp;&nbsp; <img src="https://cdn.simpleicons.org/framer/0055FF" width="52" height="52" alt="Framer Motion" title="Framer Motion" /> &nbsp;&nbsp; <img src="https://cdn.simpleicons.org/i18next/26A69A" width="52" height="52" alt="i18next" title="i18next" /> &nbsp;&nbsp; <img src="https://cdn.simpleicons.org/axios/5A29E4" width="52" height="52" alt="Axios" title="Axios" /> &nbsp;&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="52" height="52" alt="Node.js" title="Node.js" /> &nbsp;&nbsp; <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="52" height="52" alt="MongoDB" title="MongoDB" /> &nbsp;&nbsp; <img src="https://cdn.simpleicons.org/express/000000" width="52" height="52" alt="Express" title="Express" /> </p> <p align="center">  </p> <!-- BACKEND: confirm the rest — Mongoose? JWT/auth library? Mongo Express is a dev-only DB admin UI, not part of the running app, so it belongs in a "Development" note below rather than here. -->
 
 <!-- BACKEND: the server/ folder has its own stack. Add its icons and names here.
 Example: Node.js, Express, MongoDB -->
